@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mythology Teller | Official YouTube</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top, #1f160a 0%, #0b0b0d 75%);
+      color: #f5f5f7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      text-align: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    .card {
+      max-width: 400px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      border-radius: 20px;
+      padding: 32px 24px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+      box-sizing: border-box;
+    }
+    h1 {
+      font-size: 1.35rem;
+      margin: 0 0 10px;
+      color: #f3c65f;
+    }
+    p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #cbd5e1;
+      margin: 0 0 22px;
+    }
+    a.btn {
+      background: #ff0000;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-block;
+      box-shadow: 0 4px 14px rgba(255, 0, 0, 0.35);
+    }
+    a.sub-link {
+      display: block;
+      margin-top: 16px;
+      font-size: 0.82rem;
+      color: #94a3b8;
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const channelPath = "www.youtube.com/@Mythology.teller";
+      const webSubUrl = "https://" + channelPath + "?sub_confirmation=1";
+      const iosAppUrl = "youtube://" + channelPath;
+      const androidIntentUrl =
+        "intent://" + channelPath +
+        "#Intent;package=com.google.android.youtube;scheme=https;S.browser_fallback_url=" +
+        encodeURIComponent(webSubUrl) + ";end";
+
+      const ua = navigator.userAgent || "";
+      const isAndroid = /Android/i.test(ua);
+      const isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      const btn = document.getElementById("yt-btn");
+
+      if (isAndroid) {
+        btn.href = androidIntentUrl;
+        setTimeout(function () {
+          try { window.location.href = androidIntentUrl; } catch (e) {}
+        }, 150);
+      } else if (isIOS) {
+        btn.href = iosAppUrl;
+        setTimeout(function () {
+          try { window.location.href = iosAppUrl; } catch (e) {}
+        }, 150);
+      } else {
+        btn.href = webSubUrl;
+        window.location.href = webSubUrl;
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="card">
+    <h1>Mythology Teller</h1>
+    <p>Tap below to open our channel directly in the YouTube app:</p>
+    <a id="yt-btn" class="btn" href="youtube://www.youtube.com/@Mythology.teller">Open in YouTube App</a>
+    <a class="sub-link" href="https://www.youtube.com/@Mythology.teller?sub_confirmation=1">Continue in browser instead</a>
+  </div>
+</body>
+</html>
